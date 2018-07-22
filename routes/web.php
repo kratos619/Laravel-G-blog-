@@ -19,9 +19,23 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::group(['prefix' => 'admin'], function () {
+// Route::group(['prefix' => 'admin'], function () {
 
-Route::any('/post/create', [
+// Route::any('/post/create', [
+//     'uses'=> 'PostsController@create',
+//     'as'=> 'post.create'
+// ]);
+
+// Route::post('/post/store',[
+//     'uses'=> 'PostsController@store',
+//     'as' => 'post.store'
+// ]);
+    
+// });
+
+
+Route::grop(['prefix' => 'admin'],function(){
+  Route::any('/post/create', [
     'uses'=> 'PostsController@create',
     'as'=> 'post.create'
 ]);
@@ -30,5 +44,5 @@ Route::post('/post/store',[
     'uses'=> 'PostsController@store',
     'as' => 'post.store'
 ]);
-    
-});
+  
+})
