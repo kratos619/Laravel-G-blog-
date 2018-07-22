@@ -34,7 +34,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 // });
 
 
-Route::grop(['prefix' => 'admin'],function(){
+Route::group(['prefix' => 'admin'],function(){
   Route::any('/post/create', [
     'uses'=> 'PostsController@create',
     'as'=> 'post.create'
@@ -45,4 +45,4 @@ Route::post('/post/store',[
     'as' => 'post.store'
 ]);
   
-})
+});
