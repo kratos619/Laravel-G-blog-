@@ -34,7 +34,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 // });
 
 
-Route::group(['prefix' => 'admin'],function(){
+Route::group(['prefix' => 'admin','middleware'=>'auth'],function(){
   Route::any('/post/create', [
     'uses'=> 'PostsController@create',
     'as'=> 'post.create'
