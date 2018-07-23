@@ -103,7 +103,12 @@
         </div>
 
     </div>
+    <script src="{{ asset('js/app.js') }}"></script>
     <script src="{{ asset('js/toastr.min.js') }}"></script>
-     <script src="{{ asset('js/app.js') }}"></script>
-</body>
+<script>
+        @if(Session::has('success'))
+            toastr.success("{{ Session::get('success') }}")
+        @endif
+    </script>
+    </body>
 </html>
