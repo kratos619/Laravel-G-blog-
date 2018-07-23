@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Category;
+use App\Post;
+use Session;
 use Illuminate\Http\Request;
 class PostsController extends Controller
 {
@@ -42,7 +44,20 @@ class PostsController extends Controller
             'content' => 'required',
             'category_id'=> 'required'
         ]);
-        dd($request->all());
+
+        $featured_image = $request->featured;
+        $featured_image_new_name = time().$featured_image->getClientOriginalName();
+            $featured_image->move('upload_images/post_image',$featured_image_new_name);
+
+            $create_post = Post::create([
+               'title' => $request->title,
+               'featured' => 'upload_images/post_image/' .$featured_image_new_name,
+               'content' => $request->content,
+               'category_id' => $request->category_id
+
+            ]);
+            Session::flash('success',"Post Created");
+    
     }
 
     /**

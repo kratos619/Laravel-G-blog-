@@ -19,8 +19,8 @@
            </div>
            <div class="form-group col-md-4">
                <label for="cat_name">Select Category</label>
-               <select name="category_id" class="form-control" id="cat_id">
-                <option selected>Choose...</option>    
+               <select name="category_id" class="form-control" id="category_id">
+                <option >Choose...</option>    
                 @foreach($all_cat as $cat)
                     
                 <option value="{{$cat->id}}">{{$cat->name}}</option>
