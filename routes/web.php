@@ -49,5 +49,18 @@ Route::post('/post/store',[
     'uses'=> 'PostsController@store',
     'as' => 'post.store'
 ]);
+
+
+Route::any('/category/create',[
+    'uses' => 'CategoriesController@create',
+    'as' => 'category.create'
+]);
+
+
+Route::post('/cat/store',[
+    'uses'=> 'CategoriesController@store',
+    'as' => 'cat.store'
+]);
+
   
 });
