@@ -44,7 +44,7 @@ class CategoriesController extends Controller
         $create_cat = new Category;
         $create_cat->name = $request->name;
         $create_cat->save();
-        return redirect()->back();
+        return redirect()->route('categories');
 
     }
 
@@ -98,6 +98,8 @@ class CategoriesController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $delete_selected_cat = Category::findOrFail($id);
+        $delete_selected_cat->delete();
+        return redirect()->route('categories');
     }
 }
