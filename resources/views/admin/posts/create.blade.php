@@ -6,13 +6,7 @@
         create new Posts
     </div>
     <div class="card-body">
-    @if(count($errors) > 0)
-        <ul class="list-group">
-    @foreach($errors->all() as $error)
-            <li class="list-group-item list-group-item-danger">{{ $error }}</li>
-    @endforeach
-        </ul>
-        @endif
+@include('admin.includes.errors')
        <form class="py-4" action="{{route('post.store')}}" method="post" enctype="multipart/form-data" >
         {{csrf_field()}}   
         <div class="form-group">
@@ -22,6 +16,16 @@
            <div class="form-group">
                <label for="">Fetured Image</label>
                <input type="file" name="featured" class="form-control">
+           </div>
+           <div class="form-group col-md-4">
+               <label for="cat_name">Select Category</label>
+               <select name="category_id" class="form-control" id="cat_id">
+                <option selected>Choose...</option>    
+                @foreach($all_cat as $cat)
+                    
+                <option value="{{$cat->id}}">{{$cat->name}}</option>
+                @endforeach
+                </select>
            </div>
            <div class="form-group">
     <label for="exampleFormControlTextarea1">Content</label>
