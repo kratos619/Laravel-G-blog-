@@ -6,7 +6,14 @@
         create new Posts
     </div>
     <div class="card-body">
-       <form action="{{route('post.store')}}" method="post">
+    @if(count($errors) > 0)
+        <ul class="list-group">
+    @foreach($errors->all() as $error)
+            <li class="list-group-item list-group-item-danger">{{ $error }}</li>
+    @endforeach
+        </ul>
+        @endif
+       <form class="py-4" action="{{route('post.store')}}" method="post" enctype="multipart/form-data" >
         {{csrf_field()}}   
         <div class="form-group">
                <label for="">Title</label>
