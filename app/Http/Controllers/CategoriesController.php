@@ -67,7 +67,10 @@ class CategoriesController extends Controller
      */
     public function edit($id)
     {
-        //
+        //edit
+        $category = Category::findOrFail($id);
+        return view('admin.categories.edit')->with('selected_cat', $category);
+
     }
 
     /**
@@ -79,7 +82,12 @@ class CategoriesController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        //Update Categories name
+        $update_cat = Category::findOrFail($id);
+        $update_cat->name = $request->name;
+        $update_cat->save();
+        return redirect()->route('categories');
+
     }
 
     /**

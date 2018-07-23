@@ -6,13 +6,7 @@
         create new Categories
     </div>
     <div class="card-body">
-    @if(count($errors) > 0)
-        <ul class="list-group">
-    @foreach($errors->all() as $error)
-            <li class="list-group-item list-group-item-danger">{{ $error }}</li>
-    @endforeach
-        </ul>
-        @endif
+    @include('admin.includes.errors')
        <form class="py-4" action="{{route('cat.store')}}" method="post" >
         {{csrf_field()}}   
         <div class="form-group">

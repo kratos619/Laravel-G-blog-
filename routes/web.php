@@ -68,5 +68,20 @@ Route::post('/cat/store',[
     'as' => 'cat.store'
 ]);
 
+Route::get('category/edit/{id}',[
+    'uses'=> 'CategoriesController@edit',
+    'as' => 'category.edit'
+]);
+
   
+Route::get('category/delete/{id}',[
+    'uses'=> 'CategoriesController@destroy',
+    'as' => 'category.delete'
+]);
+Route::post('/cat/update/{id}',[
+    'uses'=> 'CategoriesController@update',
+    'as' => 'cat.update'
+]);
+
+
 });
