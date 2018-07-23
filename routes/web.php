@@ -50,6 +50,12 @@ Route::post('/post/store',[
     'as' => 'post.store'
 ]);
 
+//see all categories
+Route::any('/categories',[
+    'uses' => 'CategoriesController@index',
+    'as' => 'categories'
+]);
+
 
 Route::any('/category/create',[
     'uses' => 'CategoriesController@create',

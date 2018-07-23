@@ -1,8 +1,8 @@
 <?php
 
 namespace App\Http\Controllers;
-
 use Illuminate\Http\Request;
+use App\Category;
 
 class CategoriesController extends Controller
 {
@@ -14,6 +14,7 @@ class CategoriesController extends Controller
     public function index()
     {
         //
+        return view('admin.categories.index')->with('categories',Category::all());
     }
 
     /**
@@ -39,7 +40,11 @@ class CategoriesController extends Controller
         $this->validate($request,[
             'name' => 'required'
         ]);
-        dd($request->all());
+
+        $create_cat = new Category;
+        $create_cat->name = $request->name;
+        $create_cat->save();
+        return redirect()->back();
 
     }
 
