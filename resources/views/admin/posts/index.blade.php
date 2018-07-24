@@ -18,7 +18,7 @@
      <th scope="row">{{ $posts->title }}</th>
       <td>{{ $posts->content }}</td>
       
-      <td><a href="" class="btn btn-outline-warning"><i class="fas fa-edit"></i> Edit</a></td>
+      <td><a href="{{route('post.edit',['id'=> $posts->id ])}}" class="btn btn-outline-warning"><i class="fas fa-edit"></i> Edit</a></td>
       <td><a href="{{route('post.delete',['id'=> $posts->id ])}}" class="btn btn-outline-danger"><i class="fas fa-trash-alt"></i> Trash</a></td>
       
     </tr>

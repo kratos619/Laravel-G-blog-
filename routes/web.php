@@ -90,6 +90,12 @@ Route::any('/posts',[
     'as' => 'posts'
 ]);
 
+Route::post('category/edit/{id}',[
+    'uses'=> 'CategoriesController@edit',
+    'as' => 'category.edit'
+]);
+
+
 Route::any('/posts/trashed',[
     'uses' => 'PostsController@trashed',
     'as' => 'posts.trashed'
@@ -109,6 +115,11 @@ Route::get('/post/kill/{id}',[
 Route::get('/post/restore/{id}',[
     'uses' => 'PostsController@restore',
     'as' => 'post.restore'
+]);
+
+Route::get('/post/edit/{id}',[
+    'uses' => 'PostsController@edit',
+    'as' => 'post.edit'
 ]);
 
 });

@@ -88,6 +88,8 @@ class PostsController extends Controller
     public function edit($id)
     {
         //
+        $posts = Post::findOrFail($id);
+        return view('admin.posts.edit')->with('selected_post',Post::all());
     }
 
     /**
