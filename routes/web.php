@@ -106,4 +106,9 @@ Route::get('/post/kill/{id}',[
     'as' => 'post.kill'
 ]);
 
+Route::get('/post/restore/{id}',[
+    'uses' => 'PostsController@restore',
+    'as' => 'post.restore'
+]);
+
 });
