@@ -87,13 +87,23 @@ Route::post('/cat/update/{id}',[
 //display All Posts
 Route::any('/posts',[
     'uses' => 'PostsController@index',
-    'as' => 'post'
+    'as' => 'posts'
 ]);
+
+Route::any('/posts/trashed',[
+    'uses' => 'PostsController@trashed',
+    'as' => 'posts.trashed'
+]);
+
 
 Route::get('/post/delete/{id}',[
 'uses' => 'PostsController@destroy',
 'as' => 'post.delete'
 ]);
 
+Route::get('/post/kill/{id}',[
+    'uses' => 'PostsController@kill',
+    'as' => 'post.kill'
+]);
 
 });
