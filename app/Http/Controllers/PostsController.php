@@ -25,8 +25,12 @@ class PostsController extends Controller
      */
     public function create()
     {
-        //
-        return view('admin.posts.create')->with('all_cat',Category::all());
+        $all_cat = Category::all();
+        if($all_cat->count() == 0 ){
+            Session::flash('info','You Must Have Some Categories Befour Attempting to Create Posts');
+            return redirect()->back();
+        }
+        return view('admin.posts.create')->with('all_cat',$all_cat);
     }
 
     /**
