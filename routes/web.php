@@ -83,5 +83,17 @@ Route::post('/cat/update/{id}',[
     'as' => 'cat.update'
 ]);
 
+//Posts
+//display All Posts
+Route::any('/posts',[
+    'uses' => 'PostsController@index',
+    'as' => 'post'
+]);
+
+Route::get('/post/delete/{id}',[
+'uses' => 'PostsController@destroy',
+'as' => 'post.delete'
+]);
+
 
 });
