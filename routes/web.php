@@ -29,7 +29,7 @@ Auth::routes();
 //     'uses'=> 'PostsController@store',
 //     'as' => 'post.store'
 // ]);
-    
+
 // });
 
 
@@ -73,7 +73,7 @@ Route::get('category/edit/{id}',[
     'as' => 'category.edit'
 ]);
 
-  
+
 Route::get('category/delete/{id}',[
     'uses'=> 'CategoriesController@destroy',
     'as' => 'category.delete'
@@ -120,6 +120,10 @@ Route::get('/post/restore/{id}',[
 Route::get('/post/edit/{id}',[
     'uses' => 'PostsController@edit',
     'as' => 'post.edit'
+]);
+Route::post('/post/update/{id}',[
+    'uses' => 'PostsController@update',
+    'as' => 'post.update'
 ]);
 
 });

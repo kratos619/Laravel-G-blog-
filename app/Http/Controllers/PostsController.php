@@ -15,7 +15,7 @@ class PostsController extends Controller
      */
     public function index()
     {
-        
+
         return view('admin.posts.index')->with('all_posts',Post::all());
     }
 
@@ -42,7 +42,7 @@ class PostsController extends Controller
      */
     public function store(Request $request)
     {
-        
+
         $this->validate($request,[
             'title' => 'required',
             'featured' => 'image',
@@ -65,7 +65,7 @@ class PostsController extends Controller
 
             Session::flash('success',"Post Created");
             return redirect()->back();
-    
+
     }
 
     /**
@@ -87,9 +87,8 @@ class PostsController extends Controller
      */
     public function edit($id)
     {
-        //
         $posts = Post::findOrFail($id);
-        return view('admin.posts.edit')->with('selected_post',Post::all());
+        return view('admin.posts.edit')->with('post',$posts)->with('selected_cat',Category::all());
     }
 
     /**
@@ -101,7 +100,30 @@ class PostsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+
+              $this->validate($request,[
+                  'title' => 'required',
+                  'featured' => 'image',
+                  'content' => 'required',
+                  'category_id'=> 'required'
+              ]);
+
+              $post = Post::find($id);
+
+          if($request->hasFile('featured')){
+            $featured_image = $request->featured;
+            $featured_image_new_name = time().$featured_image->getClientOriginalName();
+                $featured_image->move('upload_images/post_image',$featured_image_new_name);
+          $post->$featured_image = $featured_image_new_name;
+          }
+                     $post->title = $request->title;
+                     //$post->featured => 'upload_images/post_image/' .$featured_image_new_name,
+                     $post->content = $request->content;
+                     $post->category_id = $request->category_id;
+                  $post->save();
+                  Session::flash('success',"Post Update");
+                  return redirect()->back();
+
     }
 
     /**
