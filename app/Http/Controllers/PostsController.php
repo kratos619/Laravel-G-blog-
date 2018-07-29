@@ -110,19 +110,19 @@ class PostsController extends Controller
 
               $post = Post::find($id);
 
-          if($request->hasFile('featured')){
-            $featured_image = $request->featured;
-            $featured_image_new_name = time().$featured_image->getClientOriginalName();
-                $featured_image->move('upload_images/post_image',$featured_image_new_name);
-          $post->$featured_image = $featured_image_new_name;
-          }
+        $featured_image = $request->featured;
+        $featured_image_new_name = time().$featured_image->getClientOriginalName();
+            $featured_image->move('upload_images/post_image',$featured_image_new_name);
+          
                      $post->title = $request->title;
                      //$post->featured => 'upload_images/post_image/' .$featured_image_new_name,
                      $post->content = $request->content;
+                     $post->featured = $featured_image_new_name;
+          
                      $post->category_id = $request->category_id;
                   $post->save();
                   Session::flash('success',"Post Update");
-                  return redirect()->back();
+                  return redirect()->route('posts');
 
     }
 
