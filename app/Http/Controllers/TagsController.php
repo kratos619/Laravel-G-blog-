@@ -58,6 +58,7 @@ class TagsController extends Controller
     public function show($id)
     {
         //
+
     }
 
     /**
@@ -68,7 +69,9 @@ class TagsController extends Controller
      */
     public function edit($id)
     {
-        //
+        
+        $tag = Tag::findOrFail($id);
+        return view('admin.tags.edit')->with('tag',$tag);
     }
 
     /**
@@ -80,7 +83,17 @@ class TagsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $this->validate($request,[
+            'tag' => 'required'
+        ]);
+        $tag = Tags::finOrFail($id);
+
+        $tag->tag = $request->tag;
+        $tag->save();
+
+        Session::flash('success','Tag Update');
+        return redirect()->back();
+
     }
 
     /**
