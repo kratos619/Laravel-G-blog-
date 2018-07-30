@@ -126,4 +126,35 @@ Route::post('/post/update/{id}',[
     'as' => 'post.update'
 ]);
 
+// routes for Tags
+
+Route::any('/tags',[
+    'uses' => 'TagsController@index',
+    'as' => 'tags'
+]);
+
+Route::get('/tags/edit/{id}',[
+    'uses' => 'TagsController@edit',
+    'as' => 'tag.edit'
+]);
+
+Route::any('/tags/create/',[
+    'uses' => 'TagsController@create',
+    'as' => 'tag.create'
+]);
+
+Route::post('/tags/store/',[
+    'uses' => 'TagsController@store',
+    'as' => 'tag.store'
+]);
+
+Route::post('/tags/update/{id}',[
+    'uses' => 'TagsController@update',
+    'as' => 'tag.update'
+]);
+
+Route::get('/tags/delete/{id}',[
+    'uses' => 'TagsController@destroy',
+    'as' => 'tag.delete'
+]);
 });

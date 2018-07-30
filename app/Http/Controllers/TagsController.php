@@ -27,6 +27,7 @@ class TagsController extends Controller
     public function create()
     {
         //
+        return view('admin.tags.create');
 
     }
 
@@ -70,7 +71,7 @@ class TagsController extends Controller
     public function edit($id)
     {
         
-        $tag = Tag::findOrFail($id);
+        $tag = Tags::findOrFail($id);
         return view('admin.tags.edit')->with('tag',$tag);
     }
 
@@ -86,7 +87,7 @@ class TagsController extends Controller
         $this->validate($request,[
             'tag' => 'required'
         ]);
-        $tag = Tags::finOrFail($id);
+        $tag = Tags::find($id);
 
         $tag->tag = $request->tag;
         $tag->save();
@@ -105,5 +106,9 @@ class TagsController extends Controller
     public function destroy($id)
     {
         //
+        $selected_delete_id = Tags::findOrFail($id);
+        $selected_delete_id->delete(); 
+        Session::flash('success','delete Item');
+        return redirect()->route('tags');
     }
 }
