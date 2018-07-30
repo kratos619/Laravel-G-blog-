@@ -1,6 +1,7 @@
 <?php
 
 namespace App;
+use App\Caergory;
 use App\Tags;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -15,7 +16,7 @@ class Post extends Model
         return $this->belongsTo('App\category');
     }
 
-    public function tags(){
+    public function tag(){
         return $this->belongsToMany('App\Tags');
     }
 }

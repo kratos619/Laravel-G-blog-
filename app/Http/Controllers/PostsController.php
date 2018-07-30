@@ -66,7 +66,7 @@ class PostsController extends Controller
                'slug' => str_slug($request->title)
                     
             ]);
-        $create_post->tags()->attach($request->tags);
+        $create_post->tag()->attach($request->tag);
             Session::flash('success',"Post Created");
             return redirect()->back();
 
