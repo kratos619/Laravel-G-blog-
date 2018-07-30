@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Post;
 use App\Tags;
 use Session;
 use Illuminate\Http\Request;

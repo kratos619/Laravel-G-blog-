@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Tags;
 use App\Category;
 use App\Post;
 use Session;
@@ -31,7 +32,7 @@ class PostsController extends Controller
             Session::flash('info','You Must Have Some Categories Befour Attempting to Create Posts');
             return redirect()->back();
         }
-        return view('admin.posts.create')->with('all_cat',$all_cat);
+        return view('admin.posts.create')->with('all_cat',$all_cat)->with('tags',Tags::all());
     }
 
     /**
@@ -43,11 +44,14 @@ class PostsController extends Controller
     public function store(Request $request)
     {
 
+//dd($request->all());
+
         $this->validate($request,[
             'title' => 'required',
             'featured' => 'image',
             'content' => 'required',
             'category_id'=> 'required'
+          
         ]);
 
         $featured_image = $request->featured;
@@ -60,9 +64,9 @@ class PostsController extends Controller
                'content' => $request->content,
                'category_id' => $request->category_id,
                'slug' => str_slug($request->title)
-
+                    
             ]);
-
+        $create_post->tags()->attach($request->tags);
             Session::flash('success',"Post Created");
             return redirect()->back();
 
@@ -113,12 +117,12 @@ class PostsController extends Controller
         $featured_image = $request->featured;
         $featured_image_new_name = time().$featured_image->getClientOriginalName();
             $featured_image->move('upload_images/post_image',$featured_image_new_name);
-          
+
                      $post->title = $request->title;
                      //$post->featured => 'upload_images/post_image/' .$featured_image_new_name,
                      $post->content = $request->content;
                      $post->featured = $featured_image_new_name;
-          
+
                      $post->category_id = $request->category_id;
                   $post->save();
                   Session::flash('success',"Post Update");

@@ -18,6 +18,20 @@ Route::get('/', function () {
 Auth::routes();
 
 
+/*
+|--------------------------------------------------------------------------
+|  For Reletionships     Web Routes
+|--------------------------------------------------------------------------
+|
+| 
+*/
+
+Route::get('/test',function(){
+    return App\Post::find(1)->category() ;
+});
+
+
+
 // Route::group(['prefix' => 'admin'], function () {
 
 // Route::any('/post/create', [
