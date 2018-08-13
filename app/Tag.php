@@ -4,7 +4,7 @@ namespace App;
 use App\Post;
 use Illuminate\Database\Eloquent\Model;
 
-class Tags extends Model
+class Tag extends Model
 {
     protected $fillable = ['tag'];
     function posts(){

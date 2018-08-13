@@ -1,8 +1,10 @@
 <?php
 
 namespace App;
-use App\Caergory;
-use App\Tags;
+use App\Post;
+use App\Category;
+
+use App\Tag;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
@@ -13,10 +15,10 @@ class Post extends Model
     protected $fillable = ['title','content','category_id','featured','slug'];
     protected $dates = ['deleted_at'];
     public function category(){
-        return $this->belongsTo('App\category');
+        return $this->belongsTo('App\Category');
     }
 
-    public function tag(){
-        return $this->belongsToMany('App\Tags');
+    public function tags(){
+        return $this->belongsToMany('App\Tag');
     }
 }

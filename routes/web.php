@@ -11,10 +11,15 @@
 |
 */
 
+
+Route::get('/test', function () {
+    return dd(App\Post::find(3)->category());
+});
+
+
 Route::get('/', function () {
     return view('welcome');
 });
-
 Auth::routes();
 
 
@@ -26,9 +31,9 @@ Auth::routes();
 | 
 */
 
-Route::get('/test',function(){
-    return App\Post::find(1)->category() ;
-});
+// Route::get('/test',function(){
+//     return App\Post::find(1)->category() ;
+// });
 
 
 
@@ -169,6 +174,7 @@ Route::post('/tags/update/{id}',[
 
 Route::get('/tags/delete/{id}',[
     'uses' => 'TagsController@destroy',
-    'as' => 'tag.delete'
+    'as' => 'tags.delete'
 ]);
 });
+ 

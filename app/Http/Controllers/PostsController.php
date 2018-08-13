@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Tags;
+use App\Tag;
 use App\Category;
 use App\Post;
 use Session;
@@ -32,7 +32,7 @@ class PostsController extends Controller
             Session::flash('info','You Must Have Some Categories Befour Attempting to Create Posts');
             return redirect()->back();
         }
-        return view('admin.posts.create')->with('all_cat',$all_cat)->with('tags',Tags::all());
+        return view('admin.posts.create')->with('all_cat',$all_cat)->with('tags',Tag::all());
     }
 
     /**

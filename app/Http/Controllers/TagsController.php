@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Post;
-use App\Tags;
+use App\Tag;
 use Session;
 use Illuminate\Http\Request;
 
@@ -17,7 +17,7 @@ class TagsController extends Controller
     public function index()
     {
         //
-        return view('admin.tags.index')->with('tags',Tags::all());
+        return view('admin.tags.index')->with('tags',Tag::all());
     }
 
     /**
@@ -44,7 +44,7 @@ class TagsController extends Controller
         $this->validate($request,[
             'tag'=>'required'
         ]);
-        Tags::create([
+        Tag::create([
             'tag'=> $request->tag
         ]);
             Session::flash('success','Tag Create');
@@ -72,7 +72,7 @@ class TagsController extends Controller
     public function edit($id)
     {
         
-        $tag = Tags::findOrFail($id);
+        $tag = Tag::findOrFail($id);
         return view('admin.tags.edit')->with('tag',$tag);
     }
 
@@ -88,7 +88,7 @@ class TagsController extends Controller
         $this->validate($request,[
             'tag' => 'required'
         ]);
-        $tag = Tags::find($id);
+        $tag = Tag::find($id);
 
         $tag->tag = $request->tag;
         $tag->save();
@@ -107,7 +107,7 @@ class TagsController extends Controller
     public function destroy($id)
     {
         //
-        $selected_delete_id = Tags::findOrFail($id);
+        $selected_delete_id = Tag::findOrFail($id);
         $selected_delete_id->delete(); 
         Session::flash('success','delete Item');
         return redirect()->route('tags');

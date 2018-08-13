@@ -5,7 +5,7 @@ use Session;
 use Illuminate\Http\Request;
 use App\Category;
 
-
+use App\Post;
 class CategoriesController extends Controller
 {
     /**
