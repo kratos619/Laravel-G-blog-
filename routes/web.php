@@ -13,7 +13,7 @@
 
 
 Route::get('/test2', function () {
-    return App\Tag::find(3)->posts;
+    return App\User::find(1)->profile;
 });
 
 

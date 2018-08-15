@@ -39,6 +39,7 @@
                             @endif
                          @endforeach                            
                          name="tags[]" value="{{$tag->id}}">  {{$tag->tag}}</label>
+                        
                 </div>
                 @endforeach
                 </div>
