@@ -12,8 +12,8 @@
 */
 
 
-Route::get('/test', function () {
-    return dd(App\Post::find(3)->category());
+Route::get('/test2', function () {
+    return App\Post::find(7)->category;
 });
 
 
