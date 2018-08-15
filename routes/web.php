@@ -13,7 +13,7 @@
 
 
 Route::get('/test2', function () {
-    return App\Post::find(7)->category;
+    return App\Tag::find(3)->posts;
 });
 
 

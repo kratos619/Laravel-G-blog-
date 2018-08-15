@@ -44,7 +44,7 @@ class PostsController extends Controller
     public function store(Request $request)
     {
 
-//dd($request->all());
+ //       dd($request->all());
 
         $this->validate($request,[
             'title' => 'required',
@@ -66,7 +66,7 @@ class PostsController extends Controller
                'slug' => str_slug($request->title)
                     
             ]);
-        $create_post->tag()->attach($request->tag);
+        $create_post->tags()->attach($request->tags);
             Session::flash('success',"Post Created");
             return redirect()->back();
 
