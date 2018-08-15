@@ -92,7 +92,10 @@ class PostsController extends Controller
     public function edit($id)
     {
         $posts = Post::findOrFail($id);
-        return view('admin.posts.edit')->with('post',$posts)->with('selected_cat',Category::all());
+        return view('admin.posts.edit')
+        ->with('post',$posts)
+        ->with('selected_cat',Category::all())
+        ->with('selected_tag',Tag::all());
     }
 
     /**
@@ -125,6 +128,7 @@ class PostsController extends Controller
 
                      $post->category_id = $request->category_id;
                   $post->save();
+                  $post->tags()->sync($request->tags);
                   Session::flash('success',"Post Update");
                   return redirect()->route('posts');
 

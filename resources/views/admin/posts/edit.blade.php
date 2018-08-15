@@ -28,6 +28,21 @@
 
                 </select>
            </div>
+            <div class="form-group">
+                <label for="">select Tags</label>
+                @foreach($selected_tag as $tag)
+                <div class="checkbox">
+                    <label for="tags"><input type="checkbox"
+                         @foreach($post->tags as $t)
+                            @if($tag->id == $t->id)
+                                checked
+                            @endif
+                         @endforeach                            
+                         name="tags[]" value="{{$tag->id}}">  {{$tag->tag}}</label>
+                </div>
+                @endforeach
+                </div>
+
            <div class="form-group">
     <label for="exampleFormControlTextarea1">Content</label>
     <textarea class="form-control" id="exampleFormControlTextarea1" name="content" rows="3">{{$post -> title}}</textarea>
