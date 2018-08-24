@@ -73,7 +73,7 @@
                 </div>
             </div>
         </nav>
-        <div class="container py-4"> 
+        <div class="container py-4">
             <div class="row">
                 @if(Auth::check())
                 <div class="col-lg-4">
@@ -82,16 +82,16 @@
                             <a href="{{route('home')}}">home</a>
                         </li>
                         <li class="list-group-item">
-                            <a href="{{route('posts')}}">See All Posts</a>    
+                            <a href="{{route('posts')}}">See All Posts</a>
                         </li>
                         <li class="list-group-item">
-                            <a href="{{route('posts.trashed')}}">See Trashed Posts</a>    
+                            <a href="{{route('posts.trashed')}}">See Trashed Posts</a>
                         </li>
-                        
+
                         <li class="list-group-item">
                             <a href="{{route('post.create')}}">create New Posts</a>
                         </li>
-                        
+
                         <li class="list-group-item">
                             <a href="{{route('category.create')}}">create New Categories</a>
                         </li>
@@ -104,14 +104,20 @@
                         <li class="list-group-item">
                             <a href="{{route('tag.create')}}">Create New Tag</a>
                         </li>
-                        
+                        <li class="list-group-item">
+                            <a href="{{route('users')}}">Users</a>
+                        </li>
+                        <li class="list-group-item">
+                            <a href="{{route('users.create')}}">Create User</a>
+                        </li>
+
                     </ul>
                 </div>
                 @endif
                 <div class="col-lg-8">
                     @yield('content')
                 </div>
-                
+
 
             </div>
         </div>

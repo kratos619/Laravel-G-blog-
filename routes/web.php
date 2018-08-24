@@ -13,7 +13,7 @@
 
 
 Route::get('/test2', function () {
-    return App\User::find(1)->profile;
+    return App\Profile::find(1)->user;
 });
 
 
@@ -28,7 +28,7 @@ Auth::routes();
 |  For Reletionships     Web Routes
 |--------------------------------------------------------------------------
 |
-| 
+|
 */
 
 // Route::get('/test',function(){
@@ -176,5 +176,16 @@ Route::get('/tags/delete/{id}',[
     'uses' => 'TagsController@destroy',
     'as' => 'tags.delete'
 ]);
+Route::get('/users',[
+    'uses' => 'UsersController@index',
+    'as' => 'users'
+]);
+Route::get('/users/create/',[
+    'uses' => 'UsersController@create',
+    'as' => 'users.create'
+]);
+Route::post('/users/store/',[
+    'uses' => 'UsersController@store',
+    'as' => 'users.store'
+]);
 });
- 
